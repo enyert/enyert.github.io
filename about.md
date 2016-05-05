@@ -1,10 +1,11 @@
 ---
 layout: page
-title: About
+title: Enyert Viñas
 permalink: /about/
 ---
 
-Some information about you!
+I'm a software developer living in Caracas, Venezuela. I'm passionate about
+best practices and solving interesting problems.
 
 ### More Information
 
@@ -12,4 +13,4 @@ A place to include any other types of information that you'd like to include abo
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[email@domain.com](mailto:enyert.vinas@gmail.com)
