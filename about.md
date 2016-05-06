@@ -28,8 +28,6 @@ and tech books. I'm open to any recommendation to expand my book collection too.
 * The Wheel of Time(Series) - *Robert Jordan*
 * Erlang Programming - *Francesco Cesarini & Simon Thompson*
 
-And more....
-
 ### Contact me
 
 You can find me via: [Twitter](https://twitter.com/enyert), [Email](mailto:enyert.vinas@gmail.com) and [GitHub](http://enyert.github.io/)
