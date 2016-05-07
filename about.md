@@ -5,13 +5,14 @@ permalink: /about/
 ---
 
 I'm a software developer from Caracas, Venezuela. I'm passionate about
-best practices and solving interesting problems.
+using best practices and solving interesting problems.
 
-I'm writing this blog because I want to share knowledge and help people. I love
-functional programming, so this blog will talk a lot about programming languages
-as Clojure, Erlang, Elixir, Scala, etc. I'm planning to add some content about other
-topics related with general software development and best practices too, I think my experience
-will be my main resource to generate content for this blog.
+I'm writing this blog because I want to share my knowledge and help people in this
+fascinating world of computer programming. I love functional programming, so this blog 
+will have a lot of content about programming languages as Clojure, Erlang, Elixir, Scala, etc. 
+I'm planning to add some content about other topics related with general software development 
+and best practices too, I think my experience will be my main resource to generate content 
+for this blog.
 
 I'm still learning everyday, so I really would appreciate some feedback about my posts.
 
