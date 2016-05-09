@@ -54,7 +54,7 @@ PostgreSQL installed and configured then it's time to start with the database de
 Let's suppose our client "ClojuChips" wants to store information about their products and promotions. They gave us Excel files
 with information like this:
 
-Products.xls
+*Products.xls*
 
 
 | Name             | Description             |  Quantity |  Price |
@@ -64,7 +64,7 @@ Products.xls
 
 
 
-Promotions.xls
+*Promotions.xls*
 
 |      Name      |       Description      | Discount | StartingDate | EndingDate | RelatedProducts |
 |----------------|------------------------|----------|--------------|------------|-----------------|
@@ -118,7 +118,7 @@ etc). For more information about HTTP methods: [HTTP methods](http://www.tutoria
 
 In this example, we have 2 resources: products and promotions. So we will create five functionalities for each one:
 
-*Product functionalities*:
+*Product functionalities:*
 
 |---
 | URL | HTTP Method | Description |
@@ -130,7 +130,8 @@ In this example, we have 2 resources: products and promotions. So we will create
 | /api/product/:id | DELETE | Delete one product specified by product id |
 |---
 
-*Promotions functionalities*:
+*Promotions functionalities:*
+
 |---
 | URL | HTTP Method | Description |
 |-|-|-|
@@ -141,7 +142,6 @@ In this example, we have 2 resources: products and promotions. So we will create
 | /api/promotion/:id | DELETE | Delete one promotion specified by promotion id |
 |---
 
-_____________
 
 ### Project structure
 Setting a coherent project structure for a REST API would be a hard work, because we need to
