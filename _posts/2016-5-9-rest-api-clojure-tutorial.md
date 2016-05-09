@@ -67,7 +67,7 @@ Products.xls
 Promotions.xls
 
 |      Name      |       Description      | Discount | StartingDate | EndingDate | RelatedProducts |
-|:--------------:|:----------------------:|:--------:|:------------:|------------|-----------------|
+|----------------|------------------------|----------|--------------|------------|-----------------|
 | ClojuMilkPromo | Cheaper price for milk |    33%   |  22/05/2016  | 23/06/2016 | ClojuMilk       |
 | ClojuLampPromo |     Lamps for bats     |    40%   |  13/07/2015  | 14/08/2016 | ClojuLamp       |
 
@@ -120,24 +120,26 @@ In this example, we have 2 resources: products and promotions. So we will create
 
 *Product functionalities*:
 
-| URL              | HTTP Method   | Description                                 |
-|:-----------------|:--------------|:--------------------------------------------|
-| /api/product     | GET           | List all product                            |
-| /api/product/:id | GET           | Give one product specified by product id    |
-| /api/product     | POST          | Create new product                          |
-| /api/product/:id | PUT           | Update one product specified by product id  |
-| /api/product/:id | DELETE        | Delete one product specified by product id  |
+|---
+| URL | HTTP Method | Description |
+|-|-|-|
+| /api/product | GET | List all product |
+| /api/product/:id | GET | Give one product specified by product id |
+| /api/product | POST | Create new product |
+| /api/product/:id | PUT | Update one product specified by product id |
+| /api/product/:id | DELETE | Delete one product specified by product id |
+|---
 
 *Promotions functionalities*:
-
-| URL                | HTTP Method | Description                                    |
-|--------------------|-------------|------------------------------------------------|
-| /api/promotion     | GET         | List all promotions                            |
-| /api/promotion/:id | GET         | Given one promotion specified by promotion id  |
-| /api/promotion     | POST        | Create new promotion                           |
-| /api/promotion/:id | PUT         | Update one promotion specified by promotion id |
-| /api/promotion/:id | DELETE      | Delete one promotion specified by promotion id |
-
+|---
+| URL | HTTP Method | Description |
+|-|-|-|
+| /api/promotion | GET | List all promotions |
+| /api/promotion/:id | GET | Given one promotion specified by promotion id |
+| /api/promotion | POST | Create new promotion |
+| /api/promotion/:id | PUT | Update one promotion specified by promotion id |
+| /api/promotion/:id | DELETE | Delete one promotion specified by promotion id |
+|---
 
 _____________
 
@@ -166,7 +168,7 @@ and their relationships with the resources.
 _____________
 
 ### Setup
-_____________
+
 
 To star with coding, we need to initiate our project. We are using Leiningen to dependency
 management, "scaffolding" using default templates. In our case, we want a compojure
