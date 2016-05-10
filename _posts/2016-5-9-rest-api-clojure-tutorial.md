@@ -1,6 +1,6 @@
 ---
 layout: post
-title: REST API with Liberator, first approach - Part 1
+title: Liberator + Clojure REST API, First approach - Part 1
 ---
 
 ### Glossary
@@ -31,7 +31,6 @@ title: REST API with Liberator, first approach - Part 1
   the HTTP especification.
   More information: [Liberator](http://clojure-liberator.github.io/liberator/)
 
-_____________
 
 ### What is this tutorial about?
 
@@ -42,11 +41,8 @@ with Clojure and you're trying to make an Rest API, then stay tunned.
 This tutorial tries to catch the fundamental elements about building a REST API with Clojure through presenting each step of a basic
 development process.
 
-_____________
-
 
 ### Designing and creating our database
-
 
 This is not a tutorial about installing and configuring PostgreSQL databases but you can start with these [Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04), [Windows with installers](http://www.enterprisedb.com/products-services-training/pgdownload#windows) or [Mac via brew](http://exponential.io/blog/2015/02/21/install-postgresql-on-mac-os-x-via-brew/). If you already have
 PostgreSQL installed and configured then it's time to start with the database design.
@@ -106,10 +102,8 @@ CONSTRAINT promotion_product_related_fkey FOREIGN KEY (product_related)
     ON UPDATE NO ACTION ON DELETE CASCADE
 );
 ```
-_____________
 
 ### Designing the API
-
 
 To start designing the API, we need to identify our resources. Resources in a REST API are objects with a type, a set of methods
 that operate on it, associated data, and relationships to other resources. They are pretty similar to normal object instances, with
@@ -165,10 +159,8 @@ jdbc. This represents the connection between our data and resources.
 * [*routes/:*](https://github.com/enyert/liberator-service/tree/master/src/liberator_service/routes) Inside of this folder we have the control of the API endpoints
 and their relationships with the resources.
 
-_____________
 
 ### Setup
-
 
 To star with coding, we need to initiate our project. We are using Leiningen to dependency
 management, "scaffolding" using default templates. In our case, we want a compojure
@@ -217,23 +209,3 @@ export CLOJUCHIPS_DB_PASS=password_value
 After this step, we have our project ready to start coding. I will explain more details
 of *ClojuChips* in the next part of this article. If you want to check the project go
 to [this repository](https://github.com/enyert/liberator-service.git).
-
-<!-- Part 2
-
-
-### Models
-_____________
-
-### Resources(Liberator)
-_______________
-
-### Routes
-_____________
-
-### Firing up!
-_____________
-
-### Final thoughts
-______________
-
--->
