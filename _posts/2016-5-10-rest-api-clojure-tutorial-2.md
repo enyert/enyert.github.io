@@ -157,7 +157,163 @@ with our specific entities, *products* and *promotions* in this case.
 
 
 ### Resources(Liberator)
+Resources in our project are like bridges between our models and routes.
+A resource follow the relevant requirements of our API design and specify some
+behaviour according to Liberator resources specification.
 
+##### What is Liberator?
+When I wonder about Liberator, I usually think about a tool to helps us to represent 
+our data as specific resources following certain HTTP specifications. We are using
+Liberator together with Ring and Compojure.
+
+**Why Liberator with Ring?** Because liberator resources are ring handlers,
+so we can gain a higher abstraction layer over the details of HTTP. This way, we
+can avoid some code complexity and increase the code readability.
+
+**Why Liberator with compojure?** Because our routes are managed via compojure,
+so we can connect specific routes with resource decisions, actions, handlers or
+declarations.
+
+A resource in Liberator contains a set of keys. Each key has specific meanings and
+actions associated. A key can fall into one of these categories:
+
+* Decision
+* Handler 
+* Action
+* Declaration
+
+##### Decision
+Decisions are used to take certain actions in response to specific events. The
+decision keys have a "?" at the end and their handler must be a boolean value. 
+
+For a complete list of decisions, you can check [this link](http://clojure-liberator.github.io/liberator/doc/decisions.html).
+
+##### Handler
+Handlers are keys to represent http status in Liberator. Every handler begins with "handler-".
+
+For a complete list of handlers, you can check [this link](https://clojure-liberator.github.io/liberator/doc/handlers.html).
+
+##### Action
+An action represents the current state of the client(PUT, DELETE, POST). Actions have an exclamation
+point in the end "!" to indicate that they are mutating the application's state. 
+
+When an action is triggered, we can use the *handle-created* to return the result to the client.
+
+For a complete list of actions, you can check [this link](https://clojure-liberator.github.io/liberator/doc/actions.html)
+
+##### Declaration
+Declaration are used to describe our resource's capabilities. There are no syntax rules about declarations.
+
+##### Resources in action
+I think we have a better concept about Liberator and its components. Let see this in code.
+
+We have two namespaces for our resources: **liberator-service.resources.promotion** contains every resource
+related with promotions and **liberator-service.resources.product** contains resources related with products.
+
+Namespace: *liberator-service.resources.promotion*
+```clojure
+(ns liberator-service.resources.promotion
+  (:require [liberator.core
+             :refer [defresource resource request-method-in]]
+            [cheshire.core :refer [generate-string]]
+            [liberator-service.models.db :refer 
+             [read-all-promotions
+              read-one-promotion
+              update-promotion
+              create-promotion
+              delete-promotion]]))
+
+
+(defresource promotion-all []
+  :service-available? true
+  :allowed-methods [:get]
+  :handle-ok (fn [_] (generate-string (read-all-promotions)))
+  :available-media-types ["application/json"])
+
+(defresource promotion-one [id]
+  :service-available? true
+  :allowed-methods [:get]
+  :handle-ok (fn [_] (generate-string (read-one-promotion id)))
+  :available-media-types ["application/json"])
+
+(defresource promotion-create [promotion]
+  :service-available? true
+  :allowed-methods [:post]
+  :post! (fn [_] (create-promotion promotion))
+  :handle-created promotion
+  :available-media-types ["application/json"])
+
+(defresource promotion-update [id promotion]
+  :service-available? true
+  :allowed-methods [:put]
+  :put! (fn [_] (update-promotion id promotion))
+  :handle-created promotion
+  :available-media-types ["application/json"])
+
+(defresource promotion-delete [id]
+  :service-available? true
+  :allowed-methods [:delete]
+  :delete! (fn [_] (delete-promotion id))
+  :available-media-types ["application/json"])
+```
+
+Namespace: *liberator-service.resources.product*
+```clojure
+(ns liberator-service.resources.product
+  (:require [liberator.core
+             :refer [defresource resource request-method-in]]
+            [cheshire.core :refer [generate-string]]
+            [liberator-service.models.db :refer 
+             [read-all-products
+              read-one-product
+              update-product
+              create-product
+              delete-product]]))
+
+
+(defresource product-all []
+  :service-available? true
+  :allowed-methods [:get]
+  :handle-ok (fn [_] (generate-string (read-all-products)))
+  :available-media-types ["application/json"])
+
+(defresource product-one [id]
+  :service-available? true
+  :allowed-methods [:get]
+  :handle-ok (fn [_] (generate-string (read-one-product id)))
+  :available-media-types ["application/json"])
+
+(defresource product-create [product]
+  :service-available? true
+  :allowed-methods [:post]
+  :post! (fn [_] (create-product product))
+  :handle-created product 
+  :available-media-types ["application/json"])
+
+(defresource product-update [id product]
+  :service-available? true
+  :allowed-methods [:put]
+  :put! (fn [_] (update-product id product))
+  :handle-created product
+  :available-media-types ["application/json"])
+
+(defresource product-delete [id]
+  :service-available? true
+  :allowed-methods [:delete]
+  :delete! (fn [_] (delete-product id))
+  :available-media-types ["application/json"])
+
+```
+As you can see, we have used handlers, actions, decisions and declarations in this file. For example;
+we used the declaration **available-media-types** to specify that we want to use "application/json" format, 
+we used the handler **handle-ok** to execute certain actions in response to successful operation,
+we used the decision **service-available?** to confirm that we want to expose this resource, and
+we used the action **put!** to define an update operation.
+
+While I was making my research about Liberator, I saw resources with **put!** and **delete!** actions together in the
+same resource. I think this is ok because we can avoid a few lines of code, but for this approach I wanted to show
+Liberator thinking about expose the basic concepts for every component. So, If you want to try to improve the code that
+would be amazing. Remember I'm open to receive your feedback to get better everyday.
 
 
 ### Routes
