@@ -394,7 +394,7 @@ build tests and authentication processes for our API. I will publish 2 posts rel
 to finish this job. 
 
 I hope these posts have helped you to understand the basic of the stack used used for this project 
-Clojure/Ring/Compojure/Liberator/PostgreSQL. Remember you can clone or fork the project at https://github.com/enyert/liberator-service.git 
+Clojure/Ring/Compojure/Liberator/PostgreSQL. Remember you can clone or fork the project at [source code](https://github.com/enyert/liberator-service.git) 
 anytime.
 
 Happy coding! =)
